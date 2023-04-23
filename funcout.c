@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdarg.h>
 #include "main.h"
 
 /**
@@ -8,13 +10,15 @@
 
 int _printf(const char *format, ...)
 {
+	int chars_num;
+
 	va_list args;
 
 	va_start(args, format);
 
-	int chars_num = vfprintf(stdout, format, args);
-
 	va_end(args);
+
+	chars_num = vfprintf(stdout, format, args);
 
 	return (chars_num);
 }
@@ -25,12 +29,12 @@ int _printf(const char *format, ...)
  * Return - Null
  */
 
-int main(void)
+int master(void)
 {
 	char v = 'b';
 	char str[] = "I am Max";
 
-	int chars_num1 = _printf("My character is: %c\n", c);
+	int chars_num1 = _printf("My character is: %c\n", v);
 	int chars_num2 = _printf("My string is: %s\n", str);
 
 	printf("No. of characters printed for the first call: %d\n", chars_num1);
